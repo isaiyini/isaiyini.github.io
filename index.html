@@ -90,8 +90,8 @@ searchWord = function() {
 	}
 
 // var gitHubUrl = "https://raw.githubusercontent.com/ThaniThamizhAkarathiKalanjiyam/agarathi/master/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
-
-var gitHubUrl = "https://ThaniThamizhAkarathiKalanjiyam.github.io/agarathi/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
+var txtsearchLow = $("#txtsearch").val().toLowerCase()
+var gitHubUrl = "https://ThaniThamizhAkarathiKalanjiyam.github.io/agarathi/search/"+tamil_letters[0]+"/"+ txtsearchLow
 var gitHubUrlOpenDict = "https://github.com/ThaniThamizhAkarathiKalanjiyam/agarathi"
 	$.get(gitHubUrl , 
   
