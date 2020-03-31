@@ -9,6 +9,11 @@
     <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
     <script src = "https://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src = "https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	
+	<script src = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/ttak.kirantham.js"></script>
+	
+	<script src = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/vadam.tamil.pairs.js"></script>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/markdown-it/8.4.2/markdown-it.min.js"></script>
 </head>
 <body>
     <div data-role="page" data-theme="a">
@@ -17,8 +22,8 @@
                 இசையினி</h1>
             <div data-role="navbar">
                 <ul>
-                    <li><a href="index.html" data-icon="home" class="ui-btn-active">வாயில்</a></li>
-                    <li><a href="search.html" data-icon="star">தேடு</a></li>
+                    <li><a href="index.html" data-icon="home">வாயில்</a></li>
+                    <li><a href="search.html" data-icon="star" class="ui-btn-active">தேடு</a></li>
                     <li><a href="listviews.html" data-icon="grid">உரு</a></li>
                     <li><a href="nav.html" data-icon="search">கிரந்தம்</a></li>
                     <li><a href="forms.html" data-icon="gear">புதிது</a></li>
@@ -28,7 +33,56 @@
 		<div data-role="content" data-theme="a">
 			<input type="search" name="password" id="txtsearch" value=""  />
 			<a id="btnSearch" data-role="button" data-theme="b" data-icon="search">தேடு</a>
+			<div id="ResultDict">
+			
+			</div>
 		</div>
 		</div>
+		<script>
+$(document).ready(function() {
+	
+var md = window.markdownit();
+
+
+$("#btnSearch").click(function() {
+	$( "#ResultDict" ).html( "Please wait . . . " );
+
+	var tamil_letters = get_tamil_letters($("#txtsearch").val());
+
+	$.ajaxSetup({
+        error: AjaxError
+    });
+	
+	function AjaxError(x, e) {
+	  if (x.status == 0) {
+		$( "#ResultDict" ).html(' Check Your Network.');
+	  } else if (x.status == 404) {
+		$( "#ResultDict" ).html('Requested URL not found.');
+	  } else if (x.status == 500) {
+		$( "#ResultDict" ).html('Internel Server Error.');
+	  }  else {
+		 $( "#ResultDict" ).html('Unknow Error.\n' + x.responseText);
+	  }
+	}
+
+var gitHubUrl = "https://raw.githubusercontent.com/ThaniThamizhAkarathiKalanjiyam/agarathi/master/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
+
+	$.get(gitHubUrl , 
+  
+	function( data ) {
+		if(data.length == 0)
+		{
+			$( "#ResultDict" ).html("The Result not available");	  
+		}else{
+			var result = md.render(data);
+			result += "<br/>Thanks <a href="+gitHubUrl+">Open Sourced Tamil Dictionary</a>"
+			$( "#ResultDict" ).html( result );	  
+		}	  
+	});
+	
+});
+
+});
+</script>
 	</body>
 </html>
