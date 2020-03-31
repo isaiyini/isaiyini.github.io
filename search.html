@@ -43,12 +43,15 @@ $(document).ready(function() {
 	
 var md = window.markdownit();
 
-$("#btnSearch").on("click", function(){
+$("#btnSearch")click( function(){
 searchWord();
 });
 
-$("#txtSearch").on("keypress", function(){
+$("#txtSearch").keypress( function(){
+if (event.which == 13)
+{
 searchWord();
+}
 });
 
 searchWord = function() {
