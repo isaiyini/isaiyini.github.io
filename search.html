@@ -43,8 +43,15 @@ $(document).ready(function() {
 	
 var md = window.markdownit();
 
+$("#btnSearch").on("click", function(){
+searchWord();
+});
 
-$("#btnSearch").click(function() {
+$("#txtSearch").on("keypress", function(){
+searchWord();
+});
+
+searchWord = function() {
 	$( "#ResultDict" ).html( "Please wait . . . " );
 
 	var tamil_letters = get_tamil_letters($("#txtsearch").val());
@@ -65,7 +72,9 @@ $("#btnSearch").click(function() {
 	  }
 	}
 
-var gitHubUrl = "https://raw.githubusercontent.com/ThaniThamizhAkarathiKalanjiyam/agarathi/master/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
+// var gitHubUrl = "https://raw.githubusercontent.com/ThaniThamizhAkarathiKalanjiyam/agarathi/master/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
+
+var gitHubUrl = "https://ThaniThamizhAkarathiKalanjiyam.github.io/agarathi/search/"+tamil_letters[0]+"/"+$("#txtsearch").val().toLowerCase()
 
 	$.get(gitHubUrl , 
   
@@ -80,7 +89,7 @@ var gitHubUrl = "https://raw.githubusercontent.com/ThaniThamizhAkarathiKalanjiya
 		}	  
 	});
 	
-});
+};
 
 });
 </script>
