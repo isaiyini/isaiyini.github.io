@@ -111,8 +111,8 @@ gitHubUrl = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/tabs.json"
 		if(data.length > 0)
 		{
 			var htmlList = $("<ul/>")
-			var dataTabs = JSON.parse(data)
-			$.each(dataTabs, function(key,val){
+			
+			$.each(data, function(key,val){
 				htmlList.append('<li><a href="'+val.url+'"  data-theme="a" data-ajax="false" data-icon="'+val.icon+'"></a>'+val.caption+'</li>');
 			})
 			$("#navbar").html(htmlList)
