@@ -115,6 +115,7 @@ gitHubUrl = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/tabs.json"
 			$.each(dataTabs, function(key,val){
 				htmlList.append('<li><a href="'+val.url+'"  data-theme="a" data-ajax="false" data-icon="'+val.icon+'"></a>'+val.caption+'</li>');
 			})
+			$("#navbar").html(htmlList)
 		}	  
 	},
 	"json");
