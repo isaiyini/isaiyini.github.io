@@ -108,7 +108,7 @@ gitHubUrl = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/tabs.json"
 	$.get(gitHubUrl, 
   {},
 	function( data ) {
-		if(data.length > 0)
+		if(data != null)
 		{
 			var htmlList = $("<ul/>")
 			
