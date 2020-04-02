@@ -113,7 +113,7 @@ gitHubUrl = "https://thanithamizhakarathikalanjiyam.github.io/ttakJs/tabs.json"
 			var htmlList = $("<ul/>")
 			
 			$.each(data.tabs, function(key,val){
-				htmlList.append('<li><a href="'+val.url+'"  data-theme="a" data-ajax="false" data-icon="'+val.icon+'"></a>'+val.caption+'</li>');
+				htmlList.append('<li><a href="'+val.url+'"  data-theme="a" data-ajax="false" data-icon="'+val.icon+'">'+val.caption+'</a></li>');
 			})
 			$("#navbar").html(htmlList)
 		}	  
